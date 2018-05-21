@@ -1,121 +1,187 @@
-﻿(function () {
-    "use strict";
+﻿'use strict';
 
-    var cellToHighlight;
-    var messageBanner;
 
-    // The initialize function must be run each time a new page is loaded.
+(function () {
     Office.initialize = function (reason) {
         $(document).ready(function () {
-            // Initialize the FabricUI notification mechanism and hide it
-            var element = document.querySelector('.ms-MessageBanner');
-            messageBanner = new fabric.MessageBanner(element);
-            messageBanner.hideBanner();
-            
-            // If not using Excel 2016, use fallback logic.
-            if (!Office.context.requirements.isSetSupported('ExcelApi', '1.1')) {
-                $("#template-description").text("This sample will display the value of the cells that you have selected in the spreadsheet.");
-                $('#button-text').text("Display!");
-                $('#button-desc').text("Display the selection");
 
-                $('#highlight-button').click(displaySelectedCells);
-                return;
+            if (!Office.context.requirements.isSetSupported('ExcelApi', 1.7)) {
+                console.log('Sorry. The tutorial add-in uses Excel.js APIs that are not available in your version of Office.');
             }
 
-            $("#template-description").text("This sample highlights the highest value from the cells you have selected in the spreadsheet.");
-            $('#button-text').text("Highlight!");
-            $('#button-desc').text("Highlights the largest number.");
-                
-            loadSampleData();
+            formatControls();
 
-            // Add a click event handler for the highlight button.
-            $('#highlight-button').click(hightlightHighestValue);
+            $("#run").click(run);
+            $("#createTable").click(createTable);
+            $("#createGraph").click(createGraph);
+
         });
     };
 
-    function loadSampleData() {
-        var values = [
-            [Math.floor(Math.random() * 1000), Math.floor(Math.random() * 1000), Math.floor(Math.random() * 1000)],
-            [Math.floor(Math.random() * 1000), Math.floor(Math.random() * 1000), Math.floor(Math.random() * 1000)],
-            [Math.floor(Math.random() * 1000), Math.floor(Math.random() * 1000), Math.floor(Math.random() * 1000)]
-        ];
+    function formatControls() {
 
-        // Run a batch operation against the Excel object model
-        Excel.run(function (ctx) {
-            // Create a proxy object for the active sheet
-            var sheet = ctx.workbook.worksheets.getActiveWorksheet();
-            // Queue a command to write the sample data to the worksheet
-            sheet.getRange("B3:D5").values = values;
+        var TextFieldElements = document.querySelectorAll(".ms-TextField");
+        for (var i = 0; i < TextFieldElements.length; i++) {
+            new fabric['TextField'](TextFieldElements[i]);
+        }
 
-            // Run the queued-up commands, and return a promise to indicate task completion
-            return ctx.sync();
-        })
-        .catch(errorHandler);
+        var DropdownHTMLElements = document.querySelectorAll('.ms-Dropdown');
+        for (var i = 0; i < DropdownHTMLElements.length; ++i) {
+            var Dropdown = new fabric['Dropdown'](DropdownHTMLElements[i]);
+        }
+
+        var PivotElements = document.querySelectorAll(".ms-Pivot");
+        for (var i = 0; i < PivotElements.length; i++) {
+            new fabric['Pivot'](PivotElements[i]);
+        }
     }
 
-    function hightlightHighestValue() {
-        // Run a batch operation against the Excel object model
-        Excel.run(function (ctx) {
-            // Create a proxy object for the selected range and load its properties
-            var sourceRange = ctx.workbook.getSelectedRange().load("values, rowCount, columnCount");
+    function run() {
+        Excel.run(function (context) {
 
-            // Run the queued-up command, and return a promise to indicate task completion
-            return ctx.sync()
-                .then(function () {
-                    var highestRow = 0;
-                    var highestCol = 0;
-                    var highestValue = sourceRange.values[0][0];
+            var range = context.workbook.getSelectedRange();
+            range.format.fill.color = "yellow";
+            var s = Number($('#StockPrice').val());
+            var x = Number($('#StrikePrice').val());
+            var t = Number($('#YearsTM').val());
+            var r = Number($('#RiskFreeRate').val());
+            var v = Number($('#Vol').val());
+            var flag = $('#flag').val();
 
-                    // Find the cell to highlight
-                    for (var i = 0; i < sourceRange.rowCount; i++) {
-                        for (var j = 0; j < sourceRange.columnCount; j++) {
-                            if (!isNaN(sourceRange.values[i][j]) && sourceRange.values[i][j] > highestValue) {
-                                highestRow = i;
-                                highestCol = j;
-                                highestValue = sourceRange.values[i][j];
-                            }
-                        }
-                    }
 
-                    cellToHighlight = sourceRange.getCell(highestRow, highestCol);
-                    sourceRange.worksheet.getUsedRange().format.fill.clear();
-                    sourceRange.worksheet.getUsedRange().format.font.bold = false;
+            var optionVal = Number(BlackScholes(flag, s, x, t, r, v));
+            optionVal = Number(optionVal.toFixed(2));
+            var test = addtwoValues(s, x);
+            console.log(test);
+            console.log(optionVal);
 
-                    // Highlight the cell
-                    cellToHighlight.format.fill.color = "orange";
-                    cellToHighlight.format.font.bold = true;
-                })
-                .then(ctx.sync);
+            range.values = [[optionVal]];
+
+            range.load("address");
+            return context.sync();
         })
-        .catch(errorHandler);
-    }
-
-    function displaySelectedCells() {
-        Office.context.document.getSelectedDataAsync(Office.CoercionType.Text,
-            function (result) {
-                if (result.status === Office.AsyncResultStatus.Succeeded) {
-                    showNotification('The selected text is:', '"' + result.value + '"');
-                } else {
-                    showNotification('Error', result.error.message);
+            .catch(function (error) {
+                console.log("Error: " + error);
+                if (error instanceof OfficeExtension.Error) {
+                    console.log("Debug info: " + JSON.stringify(error.debugInfo));
                 }
             });
     }
 
-    // Helper function for treating errors
-    function errorHandler(error) {
-        // Always be sure to catch any accumulated errors that bubble up from the Excel.run execution
-        showNotification("Error", error);
-        console.log("Error: " + error);
-        if (error instanceof OfficeExtension.Error) {
-            console.log("Debug info: " + JSON.stringify(error.debugInfo));
-        }
+    function createTable() {
+        Excel.run(function (context) {
+
+
+            const sheets = context.workbook.worksheets;
+
+            const sheet = sheets.add();
+            sheet.name = "Data";
+            sheets.load("items/name");
+            context.sync();
+
+
+
+            const currentWorksheet = context.workbook.worksheets.getItem("Data");
+            const OptionDataTable = currentWorksheet.tables.add("A1:D1", true /*hasHeaders*/);
+            OptionDataTable.name = "OptionsDataTable";
+
+            OptionDataTable.getHeaderRowRange().values =
+                [["Date", "Stock Price", "Strike Price", "Option Value"]];
+
+            OptionDataTable.rows.add(null /*add at the end*/, [
+                ["1/1/2017", "61", "65", "120"],
+                ["1/1/2017", "61", "65", "120"],
+                ["1/1/2017", "61", "65", "120"],
+                ["1/1/2017", "61", "65", "120"],
+                ["1/1/2017", "61", "65", "120"],
+                ["1/1/2017", "61", "65", "120"]
+            ]);
+
+            OptionDataTable.columns.getItemAt(1).getRange().numberFormat = [['$#,##0.00']];
+            OptionDataTable.columns.getItemAt(2).getRange().numberFormat = [['$#,##0.00']];
+            OptionDataTable.columns.getItemAt(3).getRange().numberFormat = [['$#,##0.00']];
+            OptionDataTable.getRange().format.autofitColumns();
+            OptionDataTable.getRange().format.autofitRows();
+
+            return context.sync();
+        })
+            .catch(function (error) {
+                console.log("Error: " + error);
+                if (error instanceof OfficeExtension.Error) {
+                    console.log("Debug info: " + JSON.stringify(error.debugInfo));
+                }
+            });
     }
 
-    // Helper function for displaying notifications
-    function showNotification(header, content) {
-        $("#notification-header").text(header);
-        $("#notification-body").text(content);
-        messageBanner.showBanner();
-        messageBanner.toggleExpansion();
+    function createGraph() {
+        Excel.run(function (context) {
+
+
+            const sheets = context.workbook.worksheets;
+
+            sheets.load("items/name");
+            context.sync();
+
+
+
+            const currentWorksheet = context.workbook.worksheets.getItem("Data");
+            var dataRange = currentWorksheet.getRange("A1:D7");
+            var chart = currentWorksheet.charts.add("Line", dataRange, "auto");
+
+            chart.title.text = "Options Data";
+            chart.legend.position = "right"
+            chart.legend.format.fill.setSolidColor("white");
+            chart.dataLabels.format.font.size = 15;
+            chart.dataLabels.format.font.color = "black";
+            
+            return context.sync();
+        })
+            .catch(function (error) {
+                console.log("Error: " + error);
+                if (error instanceof OfficeExtension.Error) {
+                    console.log("Debug info: " + JSON.stringify(error.debugInfo));
+                }
+            });
     }
+
+
+
+
+
+
+
+    function addtwoValues(a, b) {
+
+        return a + b;
+    }
+
+    function BlackScholes(PutCallFlag, S, X, T, r, v) {
+
+        var d1, d2;
+        d1 = (Math.log(S / X) + (r + v * v / 2.0) * T) / (v * Math.sqrt(T));
+        d2 = d1 - v * Math.sqrt(T);
+
+        if (PutCallFlag == "Call")
+            return S * CND(d1) - X * Math.exp(-r * T) * CND(d2);
+        else
+            return X * Math.exp(-r * T) * CND(-d2) - S * CND(-d1);
+    }
+
+    function CND(x) {
+
+        var a1, a2, a3, a4, a5, k;
+
+        a1 = 0.31938153, a2 = -0.356563782, a3 = 1.781477937, a4 = -1.821255978, a5 = 1.330274429;
+
+        if (x < 0.0)
+            return 1 - CND(-x);
+        else
+            k = 1.0 / (1.0 + 0.2316419 * x);
+        return 1.0 - Math.exp(-x * x / 2.0) / Math.sqrt(2 * Math.PI) * k
+            * (a1 + k * (-0.356563782 + k * (1.781477937 + k * (-1.821255978 + k * 1.330274429))));
+
+    }
+
+
+
 })();

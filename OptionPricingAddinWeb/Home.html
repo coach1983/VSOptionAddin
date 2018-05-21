@@ -6,63 +6,114 @@
     <title>Excel Add-In with Commands Sample</title>
 
     <script src="Scripts/jquery-1.9.1.js" type="text/javascript"></script>
-    <script src="Scripts/FabricUI/MessageBanner.js" type="text/javascript"></script>
-    <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js" type="text/javascript"></script>
+    <script src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.2.0/js/fabric.min.js"></script>
+    <script src="Scripts/jquery.fabric.min.js" type="text/javascript"></script>
+    <script src="https://appsforoffice.microsoft.com/lib/beta/hosted/office.js" type="text/javascript"></script>
 
     <!-- To enable offline debugging using a local reference to Office.js, use:                        -->
     <!-- <script src="Scripts/Office/MicrosoftAjax.js" type="text/javascript"></script>  -->
     <!-- <script src="Scripts/Office/1/office.js" type="text/javascript"></script>  -->
 
+    <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.2.0/css/fabric.min.css">
+    <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.2.0/css/fabric.components.min.css">
+
+
     <link href="Home.css" rel="stylesheet" type="text/css" />
     <script src="Home.js" type="text/javascript"></script>
 
-    <!-- For the Office UI Fabric, go to https://aka.ms/office-ui-fabric to learn more. -->
-    <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/2.1.0/fabric.min.css">
-    <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/2.1.0/fabric.components.min.css">
-    
+
+
     <!-- To enable the offline use of Office UI Fabric, use: -->
     <!-- link rel="stylesheet" href="Content/fabric.min.css" -->
     <!-- link rel="stylesheet" href="Content/fabric.components.min.css" -->
 </head>
-<body>
-    <div id="content-main">
-        <div class="padding">
-            <br />
-            <div class="ms-font-xxl ms-fontColor-neutralSecondary ms-fontWeight-semilight">Sample</div>
-            <br /><br />
-            <div class="ms-font-xl ms-fontColor-neutralTertiary">Getting Started</div>
-            <p class="ms-font-m-plus ms-fontColor-neutralTertiary" id="template-description"></p>
-            <div class="ms-font-m"><a target="_blank" class="ms-Link ms-Link--hero" href="https://go.microsoft.com/fwlink/?LinkId=276812">Find more samples online...</a></div>
-            <br /><br />
-            
-            <button class="ms-Button ms-Button--primary" id="highlight-button">
-                <span class="ms-Button-icon"><i class="ms-Icon ms-Icon--plus"></i></span>
-                <span class="ms-Button-label" id="button-text"></span>
-                <span class="ms-Button-description" id="button-desc"></span>
-            </button>
-        </div>
-    </div>
-    <div class="footer">
-        <div class="ms-Grid ms-bgColor-themeSecondary">
-            <div class="ms-Grid-row">
-                <div class="ms-Grid-col ms-u-sm12 ms-u-md12 ms-u-lg12"> <div class="ms-font-xl ms-fontColor-white">Contoso</div></div>
-            </div>
-        </div>
-    </div>
+<body class="ms-font-m ms-welcome">
 
-    <!-- FabricUI component used for displaying notifications -->
-    <div class="ms-MessageBanner" id="notification-popup">
-        <div class="ms-MessageBanner-content">
-            <div class="ms-MessageBanner-text">
-                <div class="ms-MessageBanner-clipper">
-                    <div class="ms-font-m-plus ms-fontWeight-semibold" id="notification-header"></div>
-                    <div class="ms-font-m ms-fontWeight-semilight" id="notification-body"></div>
-                </div>
+    <div id="content-header">
+        <div class="ms-Pivot ms-Pivot--tabs">
+            <ul class="ms-Pivot-links">
+                <li class="ms-Pivot-link is-selected" data-content="files" title="My files" tabindex="1">
+                    My files
+                </li>
+                <li class="ms-Pivot-link " data-content="recent" title="Recent" tabindex="1">
+                    Recent
+                </li>
+                <li class="ms-Pivot-link " data-content="shared" title="Shared with me" tabindex="1">
+                    Shared with me
+                </li>
+                <li class="ms-Pivot-link" tabindex="1">
+                    <i class="ms-Pivot-ellipsis ms-Icon ms-Icon--More"></i>
+                </li>
+            </ul>
+
+            <div class="ms-Pivot-content" data-content="files">
+               
+                    <div id="content-main">
+                        <div class="padding">
+                            <div class="ms-Dropdown" tabindex="0">
+                                <label class="ms-font-m">Option Type</label>
+                                <i class="ms-Dropdown-caretDown ms-Icon ms-Icon--ChevronDown"></i>
+                                <select class="ms-Dropdown-select" id='flag'>
+                                    <option>Choose a option type</option>
+                                    <option>Put</option>
+                                    <option>Call</option>
+                                </select>
+                            </div>
+                            <div>
+                                <p class="ms-font-m">Stock Price</p>
+                                <input class="ms-TextField-field" id="StockPrice" type="number" style="width:70%" value="" placeholder="">
+                                <br />
+                                <p class="ms-font-m">Strike Price</p>
+                                <input class="ms-TextField-field" id="StrikePrice" type="number" style="width:70%" value="" placeholder="">
+
+                                <br />
+                                <p class="ms-font-m">Years to maturity</p>
+                                <input class="ms-TextField-field" id="YearsTM" type="number" style="width:70%" value="" placeholder="">
+
+                                <br />
+                                <p class="ms-font-m">Risk free rate</p>
+                                <input class="ms-TextField-field" id="RiskFreeRate" type="number" style="width:70%" value="" placeholder="">
+
+                                <br />
+                                <p class="ms-font-m">Volatility</p>
+                                <input class="ms-TextField-field" id="Vol" type="number" style="width:70%" value="" placeholder="">
+
+                                <br /><br />
+                                <button id="run" class="ms-Button">
+                                    <span class="ms-Button-label">Calculate</span>
+                                </button>
+                                <br /><br />
+                                <button id="createTable" class="ms-Button">
+                                    <span class="ms-Button-label">Create Table</span>
+                                </button>
+                                <br /><br />
+                                <button id="createGraph" class="ms-Button">
+                                    <span class="ms-Button-label">Create Graph</span>
+                                </button>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+
             </div>
-            <button class="ms-MessageBanner-expand" style="display:none"><i class="ms-Icon ms-Icon--chevronsDown"></i> </button>
-            <div class="ms-MessageBanner-action"></div>
+            <div class="ms-Pivot-content" data-content="recent">
+                This is the recent tab.
+            </div>
+            <div class="ms-Pivot-content" data-content="shared">
+                This is the shared with me tab.
+            </div>
         </div>
-        <button class="ms-MessageBanner-close"> <i class="ms-Icon ms-Icon--x"></i> </button>
+
     </div>
+    <footer class="ms-navigation__footer ms-bgColor-themePrimary">
+        <div class="ms-navigation__footer--left">
+            <img src="/assets/logo-filled.png" />
+            <h1 class="ms-font-xl ms-fontWeight-semilight ms-fontColor-white">My Add-in Name</h1>
+        </div>
+    </footer>
+
+
 </body>
 </html>
