@@ -71,7 +71,8 @@
           <!-- PrimaryCommandSurface is the main Office Ribbon. -->
           <ExtensionPoint xsi:type="PrimaryCommandSurface">
             <!-- Use OfficeTab to extend an existing Tab. Use CustomTab to create a new tab. -->
-            <OfficeTab id="TabHome">
+            <CustomTab id="Option">
+              
               <!-- Ensure you provide a unique id for the group. Recommendation for any IDs is to namespace using your company name. -->
               <Group id="Contoso.Group1">
                 <!-- Label for your group. resid must point to a ShortString resource. -->
@@ -107,7 +108,8 @@
                   </Action>
                 </Control>
               </Group>
-            </OfficeTab>
+              <Label resid="Contoso.OptionLabel"/>
+            </CustomTab>
           </ExtensionPoint>
         </DesktopFormFactor>
       </Host>
@@ -130,6 +132,7 @@
         <bt:String id="Contoso.TaskpaneButton.Label" DefaultValue="Launch Pricing Tool" />
         <bt:String id="Contoso.Group1Label" DefaultValue="Option Pricing" />
         <bt:String id="Contoso.GetStarted.Title" DefaultValue="Get started with the Option Pricing add-in!" />
+        <bt:String id="Contoso.OptionLabel" DefaultValue="Option Pricing" />
       </bt:ShortStrings>
       <!-- LongStrings max characters==250. -->
       <bt:LongStrings>
