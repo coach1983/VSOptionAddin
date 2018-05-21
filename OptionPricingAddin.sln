@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2027
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OptionPricingAddin", "OptionPricingAddin\OptionPricingAddin.csproj", "{08069C14-16BE-4483-8F08-9BAD247F8766}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OptionPricingAddinWeb", "OptionPricingAddinWeb\OptionPricingAddinWeb.csproj", "{67938A99-EBD1-498F-909F-0FA47DD33012}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{08069C14-16BE-4483-8F08-9BAD247F8766}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08069C14-16BE-4483-8F08-9BAD247F8766}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08069C14-16BE-4483-8F08-9BAD247F8766}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{08069C14-16BE-4483-8F08-9BAD247F8766}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08069C14-16BE-4483-8F08-9BAD247F8766}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08069C14-16BE-4483-8F08-9BAD247F8766}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{67938A99-EBD1-498F-909F-0FA47DD33012}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67938A99-EBD1-498F-909F-0FA47DD33012}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67938A99-EBD1-498F-909F-0FA47DD33012}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67938A99-EBD1-498F-909F-0FA47DD33012}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {772820B5-88C5-4DC8-820E-251505AC0C29}
+	EndGlobalSection
+EndGlobal
