@@ -117,22 +117,21 @@
         Excel.run(function (context) {
 
 
-            const sheets = context.workbook.worksheets;
+            const sheet = context.workbook.worksheets.getItem("Data");
+            var dataRange = sheet.tables.getItem("OptionsDataTable");
+            var loadedvalues = dataRange.getDataBodyRange();
 
-            sheets.load("items/name");
             context.sync();
 
 
-
-            const currentWorksheet = context.workbook.worksheets.getItem("Data");
-            var dataRange = currentWorksheet.getRange("A1:D7");
-            var chart = currentWorksheet.charts.add("Line", dataRange, "auto");
+            var chart = sheet.charts.add("Line", loadedvalues, "auto");
 
             chart.title.text = "Options Data";
             chart.legend.position = "right"
             chart.legend.format.fill.setSolidColor("white");
             chart.dataLabels.format.font.size = 15;
             chart.dataLabels.format.font.color = "black";
+            chart.series.getItemAt(0).name = "Stock Price";
             
             return context.sync();
         })
