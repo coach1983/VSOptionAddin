@@ -127,14 +127,14 @@
       </bt:Urls>
       <!-- ShortStrings max characters==125. -->
       <bt:ShortStrings>
-        <bt:String id="Contoso.TaskpaneButton.Label" DefaultValue="Show Taskpane" />
-        <bt:String id="Contoso.Group1Label" DefaultValue="Commands Group" />
-        <bt:String id="Contoso.GetStarted.Title" DefaultValue="Get started with your sample add-in!" />
+        <bt:String id="Contoso.TaskpaneButton.Label" DefaultValue="Launch Pricing Tool" />
+        <bt:String id="Contoso.Group1Label" DefaultValue="Option Pricing" />
+        <bt:String id="Contoso.GetStarted.Title" DefaultValue="Get started with the Option Pricing add-in!" />
       </bt:ShortStrings>
       <!-- LongStrings max characters==250. -->
       <bt:LongStrings>
-        <bt:String id="Contoso.TaskpaneButton.Tooltip" DefaultValue="Click to Show a Taskpane" />
-        <bt:String id="Contoso.GetStarted.Description" DefaultValue="Your sample add-in loaded succesfully. Go to the HOME tab and click the 'Show Taskpane' button to get started." />
+        <bt:String id="Contoso.TaskpaneButton.Tooltip" DefaultValue="Click to Open Pricing Tool" />
+        <bt:String id="Contoso.GetStarted.Description" DefaultValue="Option Pricing add-in loaded succesfully. Go to the HOME tab and click the 'Launch Prcing Tool' button to get started." />
       </bt:LongStrings>
     </Resources>
   </VersionOverrides>
