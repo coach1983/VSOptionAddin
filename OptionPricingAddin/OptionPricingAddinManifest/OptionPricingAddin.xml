@@ -125,7 +125,7 @@
       <bt:Urls>
         <bt:Url id="Contoso.DesktopFunctionFile.Url" DefaultValue="https://optionmodel.azurewebsites.net/Functions/FunctionFile.html" />
         <bt:Url id="Contoso.Taskpane.Url" DefaultValue="https://optionmodel.azurewebsites.net/Home.html" />
-        <bt:Url id="Contoso.GetStarted.LearnMoreUrl" DefaultValue="https://go.microsoft.com/fwlink/?LinkId=276812" />
+        <bt:Url id="Contoso.GetStarted.LearnMoreUrl" DefaultValue="https://optionmodel.azurewebsites.net/help.html" />
       </bt:Urls>
       <!-- ShortStrings max characters==125. -->
       <bt:ShortStrings>
