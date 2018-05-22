@@ -119,6 +119,8 @@
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Functions\FunctionFile.html" />
     <Content Include="Functions\FunctionFile.js" />
+    <Content Include="help.html" />
+    <Content Include="help.js" />
     <Content Include="Home.css" />
     <Content Include="Home.html" />
     <Content Include="Home.js" />
