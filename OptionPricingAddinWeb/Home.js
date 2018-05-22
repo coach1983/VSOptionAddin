@@ -11,6 +11,9 @@
 
             formatControls();
 
+            document.getElementById("help").onclick = function () {
+                location.href = "/help.html";
+            };
             $("#run").click(run);
             $("#createTable").click(createTable);
             $("#createGraph").click(createGraph);
@@ -34,6 +37,8 @@
         for (var i = 0; i < PivotElements.length; i++) {
             new fabric['Pivot'](PivotElements[i]);
         }
+
+       
     }
 
     function run() {
