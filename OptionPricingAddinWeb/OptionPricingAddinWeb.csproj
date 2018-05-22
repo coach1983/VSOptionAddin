@@ -126,6 +126,8 @@
     <Content Include="Images\Button16x16.png" />
     <Content Include="Images\Button32x32.png" />
     <Content Include="Images\Button80x80.png" />
+    <Content Include="Images\calculator16x16.png" />
+    <Content Include="Images\calculator32x32.png" />
     <Content Include="Images\Close.png" />
     <Content Include="Scripts\FabricUI\MessageBanner.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
