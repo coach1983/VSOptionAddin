@@ -118,15 +118,15 @@
             });
     }
 
-    async function createGraph() {
-        await Excel.run(async (context) => {
+     function createGraph() {
+         Excel.run(function (context) {
 
 
             const sheet = context.workbook.worksheets.getItem("Data");
             let dataRange = sheet.tables.getItem("OptionsDataTable");
             let loadedvalues = dataRange.getDataBodyRange();
 
-            await context.sync();
+            return context.sync();
 
 
             let chart = sheet.charts.add("Line", loadedvalues, "auto");
@@ -138,7 +138,7 @@
             chart.dataLabels.format.font.color = "black";
             chart.series.getItemAt(0).name = "Stock Price";
             
-            await context.sync();
+            return context.sync();
         })
             .catch(function (error) {
                 console.log("Error: " + error);
