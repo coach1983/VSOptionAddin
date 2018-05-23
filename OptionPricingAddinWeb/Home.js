@@ -123,13 +123,13 @@
 
 
             const sheet = context.workbook.worksheets.getItem("Data");
-            let dataRange = sheet.tables.getItem("OptionsDataTable");
-            let loadedvalues = dataRange.getDataBodyRange();
+            var dataRange = sheet.tables.getItem("OptionsDataTable");
+            var loadedvalues = dataRange.getDataBodyRange();
 
             return context.sync();
 
 
-            let chart = sheet.charts.add("Line", loadedvalues, "auto");
+            var chart = sheet.charts.add("Line", loadedvalues, "auto");
 
             chart.title.text = "Options Data";
             chart.legend.position = "right"
