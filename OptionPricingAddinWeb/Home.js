@@ -126,7 +126,7 @@
             var dataRange = sheet.tables.getItem("OptionsDataTable");
             var loadedvalues = dataRange.getDataBodyRange();
 
-            return context.sync();
+            context.sync();
 
 
             var chart = sheet.charts.add("Line", loadedvalues, "auto");
