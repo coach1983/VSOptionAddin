@@ -119,7 +119,7 @@
     }
 
     async function createGraph() {
-        await Excel.run(async function (context) {
+        await Excel.run(async (context) => {
 
 
             const sheet = context.workbook.worksheets.getItem("Data");
@@ -138,7 +138,7 @@
             chart.dataLabels.format.font.color = "black";
             chart.series.getItemAt(0).name = "Stock Price";
             
-            await return context.sync();
+            await context.sync();
         })
             .catch(function (error) {
                 console.log("Error: " + error);
