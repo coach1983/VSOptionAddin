@@ -9,7 +9,8 @@
                 console.log('Sorry. The tutorial add-in uses Excel.js APIs that are not available in your version of Office.');
             }
 
-           
+            document.getElementById("BacktoModel").onclick = function () {
+                location.href = "/Home.html";
            
 
         });
