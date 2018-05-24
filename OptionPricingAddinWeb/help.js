@@ -11,7 +11,7 @@
 
             document.getElementById("BacktoModel").onclick = function () {
                 location.href = "/Home.html";
-           
+            }
 
         });
     };
