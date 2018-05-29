@@ -150,6 +150,10 @@
     }
 
 
+     function addtwoValues(a, b) {
+
+         return a + b;
+     }
 
 
 
