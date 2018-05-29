@@ -1,6 +1,6 @@
 ﻿'use strict';
 
-import * as functions from  '/Functions/FunctionsFile.js';
+import * as functions from  '/Functions/FunctionFile.js';
 
 (function () {
     Office.initialize = function (reason) {
