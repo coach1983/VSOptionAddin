@@ -1,5 +1,6 @@
 ﻿'use strict';
 
+import * as functions from  '/Functions/FunctionsFile.js';
 
 (function () {
     Office.initialize = function (reason) {
@@ -56,7 +57,7 @@
 
             var optionVal = Number(BlackScholes(flag, s, x, t, r, v));
             optionVal = Number(optionVal.toFixed(2));
-            var test = addtwoValues(s, x);
+            var test = functions.addtwoValues(s, x);
             console.log(test);
             console.log(optionVal);
 
@@ -154,10 +155,7 @@
 
 
 
-    function addtwoValues(a, b) {
-
-        return a + b;
-    }
+   
 
     function BlackScholes(PutCallFlag, S, X, T, r, v) {
 
