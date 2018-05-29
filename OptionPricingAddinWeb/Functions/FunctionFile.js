@@ -5,7 +5,7 @@
     };
 
 
-    function addtwoValues(a, b) {
+    export function addtwoValues(a, b) {
 
         return a + b;
     }
