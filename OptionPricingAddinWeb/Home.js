@@ -225,7 +225,7 @@
         var steps = 50;  // number of datapoints will be steps*steps
         var xaxisMax = 3;
         var xaxisStep = xaxisMax / steps;
-        var yaxismax = 1; 
+        var yaxisMax = 1; 
         var yxaxisStep = yaxisMax / steps;
 
         var PutCall = "Call";
