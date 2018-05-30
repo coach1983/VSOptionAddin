@@ -224,7 +224,10 @@
         var counter = 0;
         var steps = 50;  // number of datapoints will be steps*steps
         var axisMax = 314;
-        var axisStep = axisMax / steps;
+        var xaxisStep = axisMax / steps;
+        var yaxismax = 1; 
+        var yxaxisStep = yaxisMax / steps;
+
         var PutCall = "Call";
         var Strike = 50;
         var StockPrice = 55;
@@ -233,8 +236,8 @@
 
 
 
-        for (var x = 0; x < axisMax; x += axisStep) {
-            for (var y = 0; y < axisMax; y += axisStep) {
+        for (var x = 0; x < axisMax; x += xaxisStep) {
+            for (var y = 0; y < yaxisMax; y += yaxisStep) {
 
                 //var value = (Math.sin(x / 50) * Math.cos(y / 50) * 50 + 50);
                 var value = Number(Gdelta(PutCall,Strike,StockPrice,x,riskrate,b,y));
