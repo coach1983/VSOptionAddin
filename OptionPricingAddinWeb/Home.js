@@ -223,8 +223,8 @@
         // create some nice looking data with sin/cos
         var counter = 0;
         var steps = 50;  // number of datapoints will be steps*steps
-        var axisMax = 314;
-        var xaxisStep = axisMax / steps;
+        var xaxisMax = 3;
+        var xaxisStep = xaxisMax / steps;
         var yaxismax = 1; 
         var yxaxisStep = yaxisMax / steps;
 
@@ -236,7 +236,7 @@
 
 
 
-        for (var x = 0; x < axisMax; x += xaxisStep) {
+        for (var x = 0; x < xaxisMax; x += xaxisStep) {
             for (var y = 0; y < yaxisMax; y += yaxisStep) {
 
                 //var value = (Math.sin(x / 50) * Math.cos(y / 50) * 50 + 50);
