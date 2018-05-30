@@ -15,6 +15,8 @@
             }
 
             formatControls();
+            ModelViz();
+
 
             document.getElementById("help").onclick = function () {
                location.href = "/help.html";
@@ -192,6 +194,55 @@
 
     }
 
+    function Gdelta(CallPutFlag,S,X,T,r,b,v) {
+
+        
+        var dl; 
+        dl = (Log(S / X) + (b + v ^ 2 / 2) * T) / (v * Sqr(T));
+
+        if (CallPutFlag == "Call")
+        return  Exp((b-r) * T) * CND(d1);
+        else
+        return  -Exp((b-r) * T) * CND(-d1);
+        
+
+
+    }
+
+    function ModelViz() {
+
+        // Create and populate a data table.
+        var data = new vis.DataSet();
+        // create some nice looking data with sin/cos
+        var counter = 0;
+        var steps = 50;  // number of datapoints will be steps*steps
+        var axisMax = 314;
+        var axisStep = axisMax / steps;
+        for (var x = 0; x < axisMax; x += axisStep) {
+            for (var y = 0; y < axisMax; y += axisStep) {
+                var value = (Math.sin(x / 50) * Math.cos(y / 50) * 50 + 50);
+                data.add({ id: counter++, x: x, y: y, z: value, style: value });
+            }
+        }
+
+        // specify options
+        var options = {
+            width: '100%',
+            height: '400px',
+            style: 'surface',
+            showPerspective: true,
+            showGrid: true,
+            showShadow: false,
+            keepAspectRatio: true,
+            verticalRatio: 0.5,
+            tooltip: true
+        };
+
+        // Instantiate our graph object.
+        var container = document.getElementById('Model');
+        var graph3d = new vis.Graph3d(container, data, options);
+
+    }
 
 
 })();
