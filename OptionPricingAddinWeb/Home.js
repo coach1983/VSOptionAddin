@@ -221,11 +221,19 @@
         var steps = 50;  // number of datapoints will be steps*steps
         var axisMax = 314;
         var axisStep = axisMax / steps;
+        var PutCall = "Call";
+        var Strike = 50;
+        var StockPrice = 55;
+        var riskrate = 0.035;
+        var b = 0.10;
+
+
+
         for (var x = 0; x < axisMax; x += axisStep) {
             for (var y = 0; y < axisMax; y += axisStep) {
 
                 //var value = (Math.sin(x / 50) * Math.cos(y / 50) * 50 + 50);
-                var value = Gdelta("Call",50,55,x,0.035,0.10,y);
+                var value = Gdelta(PutCall,Strike,StockPrice,x,riskrate,b,y);
                 data.add({ id: counter++, x: x, y: y, z: value, style: value });
             }
         }
