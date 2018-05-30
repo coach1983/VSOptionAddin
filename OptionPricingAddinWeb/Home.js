@@ -204,8 +204,8 @@
     function Gdelta(CallPutFlag,S,X,T,r,b,v) {
 
         
-        var dl; 
-        dl = (Math.log(S / X) + (b + v ^ 2 / 2) * T) / (v * Math.sqrt(T));
+        var d1; 
+        d1 = (Math.log(S / X) + (b + v ^ 2 / 2) * T) / (v * Math.sqrt(T));
 
         if (CallPutFlag == "Call")
         return  Math.exp((b-r) * T) * CND(d1);
