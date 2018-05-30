@@ -2,20 +2,6 @@
 
 //import * as functions from  '/Functions/FunctionFile.js';
 
-$(document).ready(function () {
-
-   
-
-    formatControls();
-
-    document.getElementById("help").onclick = function () {
-        location.href = "/help.html";
-    };
-    $("#run").click(run);
-    $("#createTable").click(createTable);
-    $("#createGraph").click(createGraph);
-
-});
 
 
 
@@ -28,14 +14,14 @@ $(document).ready(function () {
                 console.log('Sorry. The tutorial add-in uses Excel.js APIs that are not available in your version of Office.');
             }
 
-            //formatControls();
+            formatControls();
 
-            //document.getElementById("help").onclick = function () {
-              //  location.href = "/help.html";
-            //};
-            //$("#run").click(run);
-            //$("#createTable").click(createTable);
-            //$("#createGraph").click(createGraph);
+            document.getElementById("help").onclick = function () {
+               location.href = "/help.html";
+            };
+            $("#run").click(run);
+            $("#createTable").click(createTable);
+            $("#createGraph").click(createGraph);
 
         });
     };
