@@ -15,7 +15,7 @@
             }
 
             formatControls();
-           // ModelViz();
+            ModelViz();
 
 
             document.getElementById("help").onclick = function () {
