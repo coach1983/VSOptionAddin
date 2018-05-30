@@ -201,12 +201,12 @@
 
         
         var dl; 
-        dl = (Log(S / X) + (b + v ^ 2 / 2) * T) / (v * Sqr(T));
+        dl = (Math.log(S / X) + (b + v ^ 2 / 2) * T) / (v * Math.sqrt(T));
 
         if (CallPutFlag == "Call")
-        return  Exp((b-r) * T) * CND(d1);
+        return  Math.exp((b-r) * T) * CND(d1);
         else
-        return  -Exp((b-r) * T) * CND(-d1);
+        return  -Math.exp((b-r) * T) * CND(-d1);
         
 
 
