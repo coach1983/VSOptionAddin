@@ -67,6 +67,10 @@
             var optionVal = Number(BlackScholes(flag, s, x, t, r, v));
             optionVal = Number(optionVal.toFixed(2));
             var test = addtwoValues(s, x);
+
+
+
+
             console.log(test);
             console.log(optionVal);
 
@@ -233,7 +237,7 @@
             for (var y = 0; y < axisMax; y += axisStep) {
 
                 //var value = (Math.sin(x / 50) * Math.cos(y / 50) * 50 + 50);
-                var value = Gdelta(PutCall,Strike,StockPrice,x,riskrate,b,y);
+                var value = Number(Gdelta(PutCall,Strike,StockPrice,x,riskrate,b,y));
                 data.add({ id: counter++, x: x, y: y, z: value, style: value });
             }
         }
