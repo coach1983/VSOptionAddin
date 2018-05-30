@@ -226,7 +226,7 @@
         var xaxisMax = 3;
         var xaxisStep = xaxisMax / steps;
         var yaxisMax = 1; 
-        var yxaxisStep = yaxisMax / steps;
+        var yaxisStep = yaxisMax / steps;
 
         var PutCall = "Call";
         var Strike = 50;
