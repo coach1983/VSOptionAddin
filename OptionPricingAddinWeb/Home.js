@@ -225,7 +225,7 @@
             for (var y = 0; y < axisMax; y += axisStep) {
 
                 //var value = (Math.sin(x / 50) * Math.cos(y / 50) * 50 + 50);
-                var value = (Gdelta("Call",50,55,x,0.035,0.10,y));
+                var value = (Gdelta("Call",Number(50),Number(55),x,Number(0.035),Number(0.10),y));
                 data.add({ id: counter++, x: x, y: y, z: value, style: value });
             }
         }
