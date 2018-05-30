@@ -22,8 +22,7 @@
                location.href = "/help.html";
             };
 
-            var container = document.getElementById('Model');
-            var graph3d = new vis.Graph3d(container, data, options);
+            
 
             $("#run").click(run);
             $("#createTable").click(createTable);
@@ -243,7 +242,8 @@
         };
 
         // Instantiate our graph object.
-      
+        var container = document.getElementById('Model');
+        var graph3d = new vis.Graph3d(container, data, options);
 
     }
 
