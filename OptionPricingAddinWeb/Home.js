@@ -142,7 +142,7 @@
             var chart = sheet.charts.add("Line", loadedvalues, "auto");
 
             chart.title.text = "Options Data";
-            chart.legend.position = "right"
+            chart.legend.position = "right";
             chart.legend.format.fill.setSolidColor("white");
             chart.dataLabels.format.font.size = 15;
             chart.dataLabels.format.font.color = "black";
