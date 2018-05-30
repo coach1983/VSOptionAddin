@@ -15,14 +15,14 @@
             }
 
             formatControls();
-            ModelViz();
+            
 
 
             document.getElementById("help").onclick = function () {
                location.href = "/help.html";
             };
 
-            
+            ModelViz();
 
             $("#run").click(run);
             $("#createTable").click(createTable);
