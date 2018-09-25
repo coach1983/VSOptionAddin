@@ -1,0 +1,108 @@
+{
+    "functions": [
+        {
+            "id": "ADD42",
+            "name": "ADD42",
+            "description":  "Adds 42 to the input number",
+            "helpUrl": "http://dev.office.com",
+            "result": {
+                "type": "number",
+                "dimensionality": "scalar"
+            },
+            "parameters": [
+                {
+                    "name": "num",
+                    "description": "Number",
+                    "type": "number",
+                    "dimensionality": "scalar"
+                }
+            ]
+        },
+        {
+            "id": "ADD42ASYNC",
+            "name": "ADD42ASYNC",
+            "description":  "asynchronously wait 250ms, then add 42",
+            "helpUrl": "http://dev.office.com",
+            "result": {
+                "type": "number",
+                "dimensionality": "scalar"
+            },
+            "parameters": [
+                {
+                    "name": "num",
+                    "description": "Number",
+                    "type": "number",
+                    "dimensionality": "scalar"
+                }
+            ]
+        },
+        {
+            "id": "ISEVEN",
+            "name": "ISEVEN", 
+            "description":  "Determines whether a number is even",
+            "helpUrl": "http://dev.office.com",
+            "result": {
+                "type": "boolean",
+                "dimensionality": "scalar"
+            },
+            "parameters": [
+                {
+                    "name": "num",
+                    "description": "the number to be evaluated",
+                    "type": "number",
+                    "dimensionality": "scalar"
+                }
+            ]
+        },
+        {
+            "id": "GETDAY",
+            "name": "GETDAY",
+            "description": "Gets the day of the week",
+            "helpUrl": "http://dev.office.com",
+            "result": {
+                "type": "string"
+            },
+            "parameters": []
+        },
+        {
+            "id": "INCREMENTVALUE",
+            "name": "INCREMENTVALUE", 
+            "description":  "Counts up from zero",
+            "helpUrl": "http://dev.office.com",
+            "result": {
+                "type": "number",
+                "dimensionality": "scalar"
+            },
+            "parameters": [
+                {
+                    "name": "increment",
+                    "description": "the number to be added each time",
+                    "type": "number",
+                    "dimensionality": "scalar"
+                }
+            ],
+            "options": {
+                "stream": true,
+                "cancelable": true
+            }
+        },
+        {
+            "id": "SECONDHIGHEST",
+            "name": "SECONDHIGHEST", 
+            "description":  "gets the second highest number from a range",
+            "helpUrl": "http://dev.office.com",
+            "result": {
+                "type": "number",
+                "dimensionality": "scalar"
+            },
+            "parameters": [
+                {
+                    "name": "range",
+                    "description": "the input range",
+                    "type": "number",
+                    "dimensionality": "matrix"
+                }
+            ]
+        }
+    ]
+}
