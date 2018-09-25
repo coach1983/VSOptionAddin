@@ -1,15 +1,22 @@
-﻿<!DOCTYPE html>
+﻿<<!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <title></title>
-    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.1.min.js" type="text/javascript"></script>
-    <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js" type="text/javascript"></script>
-    
-    <script src="FunctionFile.js" type="text/javascript"></script>
-</head>
-<body>
-    <!-- NOTE: The body is empty on purpose. Since this is invoked via a button, there is no UI to render. -->
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+		<meta http-equiv="Expires" content="0" />
+		<title></title>
+		<script src="https://unpkg.com/@microsoft/office-js@1.1.5-adhoc.18/dist/office.js" type="text/javascript"></script>
+
+		<script src="customfunctions.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			(function () {
+				"use strict";
+				Office.initialize = function (reason) {
+					return Excel.CustomFunctions.initialize();
+				};
+			})();
+		</script>
+	</head>
+	<body>
+	</body>
 </html>
