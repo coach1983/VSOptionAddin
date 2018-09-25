@@ -5,7 +5,9 @@
     };
 
 
-    
+    function ADD42(a, b) {
+        return a + b + 42;
+    } 
 
 
 

@@ -110,20 +110,23 @@
               </Group>
               <Label resid="Contoso.OptionLabel"/>
             </CustomTab>
-          </ExtensionPoint>
-           <ExtensionPoint xsi:type="CustomFunctions">
+        </DesktopFormFactor>
+        <AllFormFactors>
+                <ExtensionPoint xsi:type="CustomFunctions">
                     <Script>
-                        <SourceLocation resid="JS-URL" /> <!--resid points to location of JavaScript file-->
+                        <SourceLocation resid="Contoso.JS-URL" /> <!--resid points to location of JavaScript file-->
                     </Script>
                     <Page>
-                        <SourceLocation resid="HTML-URL"/> <!--resid points to location of HTML file-->
+                        <SourceLocation resid="Contoso.HTML-URL"/> <!--resid points to location of HTML file-->
                     </Page>
                     <Metadata>
-                        <SourceLocation resid="JSON-URL" /> <!--resid points to location of JSON file-->
+                        <SourceLocation resid="Contoso.JSON-URL" /> <!--resid points to location of JSON file-->
                     </Metadata>
-                    <Namespace resid="namespace" />
+                    <Namespace resid="Contoso.namespace" />
                 </ExtensionPoint>
-        </DesktopFormFactor>
+            </AllFormFactors>
+
+
       </Host>
     </Hosts>
     
@@ -135,9 +138,9 @@
         <bt:Image id="Contoso.tpicon_80x80" DefaultValue="https://optionmodel.azurewebsites.net/Images/Button80x80.png" />
       </bt:Images>
       <bt:Urls>
-        <bt:Url id="HTML-URL" DefaultValue="https://optionmodel.azurewebsites.net/Functions/FunctionFile.html" />
-        <bt:Url id="JS-URL" DefaultValue="https://optionmodel.azurewebsites.net/Functions/FunctionFile.js" /> <!--specifies the location of your JavaScript file-->
-        <bt:Url id="JSON-URL" DefaultValue="https://optionmodel.azurewebsites.net/Functions/FunctionFile.json" />
+        <bt:Url id="Contoso.HTML-URL" DefaultValue="https://optionmodel.azurewebsites.net/Functions/FunctionFile.html" />
+        <bt:Url id="Contoso.JS-URL" DefaultValue="https://optionmodel.azurewebsites.net/Functions/FunctionFile.js" /> <!--specifies the location of your JavaScript file-->
+        <bt:Url id="Contoso.JSON-URL" DefaultValue="https://optionmodel.azurewebsites.net/Functions/FunctionFile.json" />
         <bt:Url id="Contoso.Taskpane.Url" DefaultValue="https://optionmodel.azurewebsites.net/Home.html" />
         <bt:Url id="Contoso.GetStarted.LearnMoreUrl" DefaultValue="https://optionmodel.azurewebsites.net/help.html" />
       </bt:Urls>
@@ -147,7 +150,7 @@
         <bt:String id="Contoso.Group1Label" DefaultValue="Option Pricing" />
         <bt:String id="Contoso.GetStarted.Title" DefaultValue="Get started with the Option Pricing add-in!" />
         <bt:String id="Contoso.OptionLabel" DefaultValue="Option Pricing" />
-         <bt:String id="namespace" DefaultValue="OptionPricing" />
+         <bt:String id="Contoso.namespace" DefaultValue="OptionPricing" />
       </bt:ShortStrings>
       <!-- LongStrings max characters==250. -->
       <bt:LongStrings>
